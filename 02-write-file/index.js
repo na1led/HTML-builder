@@ -7,16 +7,21 @@ let readlineInt = readline.createInterface({
 	output: process.stdout
 });
 readlineInt.on('line', (data)=>{
+
+	data = data.trim();
 	if (data == 'exit') {
 		console.log('[Closing...]');
 		readlineInt.close();
 	}else{
-		let filePath = path.join(__dirname, 'text.txt');
-		fs.appendFile(filePath, data, (error) => {
-			if (error) {
-				throw error;
-			}
-		});
+		if (data.length > 0) {
+			let filePath = path.join(__dirname, 'text.txt');
+			fs.appendFile(filePath, `${data}\n`, (error) => {
+				if (error) {
+					throw error;
+				}
+			});
+		}
+
 	}
 
 });
