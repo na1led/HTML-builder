@@ -5,8 +5,7 @@ const path = require('path');
 
 let folderDir = path.join(path.dirname(__filename), 'files');
 let dest = path.join(path.dirname(__filename), 'files-copy');
-console.log(folderDir);
-console.log(dest);
+
 
 fs.mkdir(dest, { recursive: true }, (error) => {
 	if (error) {
@@ -28,9 +27,13 @@ p.then((data) => {
 		let dirName = path.join(folderDir, item.name);
 		let destName = path.join(dest, item.name);
 		fs.copyFile(dirName, destName, (err)=>{
-			console.log(err);
+			if (err) {
+				throw err;
+			}
 		});
+		
 	});
+	console.log('[Copied succesful!]');
 });
 
 

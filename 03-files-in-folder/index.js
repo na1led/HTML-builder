@@ -18,10 +18,12 @@ p.then((data) => {
 		fs.stat(path.join(folderDir, item.name), (err, stats) => {
 			let ext = path.extname(item.name);
 			if (!item.isFile()) {
-				ext = 'not a file';
+			console.log(`${item.name} is not a file!`);
+			}else{
+				console.log(`File name: [${item.name}] Ext: [${ext}] Size: [${(stats.size / 1000)}kb]`);
 			}
-			console.log(`File name: [${item.name}] Ext: [${ext}] Size: [${(stats.size / 1000)}kb]`);
 		});
+			
 
 
 	});

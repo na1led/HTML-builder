@@ -25,5 +25,8 @@ readlineInt.on('line', (data)=>{
 	}
 
 });
+readlineInt.on('close', ()=>{
+	console.log('[Closing...]');
+});
 
 
